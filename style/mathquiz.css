@@ -1,0 +1,471 @@
+:root {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  max-height: 100%;
+  background: linear-gradient(#51bb6b, #70e970, #b7d281);
+  color: white;
+  position: relative;
+  max-width: 100vw;
+  overflow: hidden;
+  overflow-x: hidden;
+  text-shadow: 2px 2px 3px black;
+  font-family: Sans-Serif;
+  user-select: none;
+}
+.gameContainer {
+  width: calc(100%-20px);
+  height: auto;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  border-bottom: none;
+}
+.buttonCont {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.head {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+}
+.logo {
+  color: #8fec8f;
+}
+.problem {
+  color: white;
+  font-weight: bolder;
+}
+.hintBtn {
+  font-weight: bolder;
+  height: 30px;
+  width: auto;
+  border-radius: 20%;
+  background: #ffffffa5;
+  border: 2px solid #c4ba6b;
+}
+.problem {
+  font-size: 30px;
+  margin: 40px 0;
+}
+.inputCont {
+  display: flex;
+  margin-bottom: 20px;
+  justify-content: flex-start;
+  width: 70%;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0px 0 3px 1px rgba(0, 0, 0, 0.6);
+}
+@media screen and (min-width: 700px) {
+  .inputCont {
+    width: 50%;
+  }
+}
+@keyframes shake {
+  0% {
+    margin-left: 3px;
+  }
+  25% {
+    margin-left: -3px;
+  }
+  30% {
+    margin-left: 3px;
+  }
+  50% {
+    margin-left: -3px;
+  }
+  70% {
+    margin-left: 3px;
+  }
+  0% {
+    margin-left: 0px;
+  }
+}
+.inputCont .submitBtn {
+  background: green;
+  border-width: 0;
+  color: white;
+  cursor: pointer;
+  flex: 1;
+  font-weight: bolder;
+}
+.inputCont .submitBtn:focus {
+  outline: none;
+}
+.inputCont input {
+  padding: 5px;
+  border: none;
+  outline: none;
+  font-weight: bolder;
+  font-size: 20px;
+  display: block;
+  width: 70%;
+}
+
+.moneyCont {
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  border-radius: 20%;
+  background: #ffffffa5;
+  border: 2px solid #c4ba6b;
+  width: 4ch;
+  padding-right: 5px;
+  justify-content: flex-end;
+  position: relative;
+}
+button {
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+.moneyCont i {
+  color: #90ff90;
+  font-size: 20px;
+  margin-left: 3px;
+}
+.moneyCont .indicator {
+  position: absolute;
+  left: 35%;
+  display: block;
+  font-size: 1.3rem;
+  -webkit-animation: indicate 0.5s ease forwards;
+  -o-animation: indicate 0.5s ease forwards;
+  animation: indicate 0.5s ease forwards;
+}
+@-webkit-keyframes indicate {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-100%);
+  }
+}
+@-o-keyframes indicate {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-100%);
+  }
+}
+@-moz-keyframes indicate {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-100%);
+  }
+}
+@keyframes indicate {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-100%);
+  }
+}
+.difficulty {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  background: #ffffffa5;
+  margin-bottom: 5px;
+  max-width: 70px;
+  border: 2px solid #c4ba6b;
+  border-radius: 7px;
+  padding: 5px;
+}
+.difficulty button {
+  border-width: 0;
+  border: 2px solid #c4ba6b;
+  width: 100%;
+  cursor: pointer;
+  position: relative;
+  font-weight: 900;
+  margin: 3px auto;
+  border-radius: 5px;
+  position: relative;
+}
+.hide {
+  position: absolute;
+  opacity: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  pointer-events: none;
+}
+button:focus {
+  outline: none;
+}
+.difficulty button:disabled {
+  background: green;
+  color: white;
+}
+.changeDifficulty,
+.changeOperator,
+.settings {
+  margin-bottom: 5px;
+  border-radius: 5px;
+}
+.hintModal {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  background: black;
+  background: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  display: flex;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s ease;
+  pointer-events: none;
+}
+.confirmBox {
+  position: absolute;
+  top: 30%;
+  transform: scale(0);
+  background: rgba(255, 255, 255, 0.923);
+  border: 2px solid rgb(255, 230, 2);
+  display: grid;
+  grid-template-columns: 100px 100px;
+  grid-template-rows: 40px 40px;
+  border-radius: 10px;
+  transition: all 0.5s ease;
+  visibility: hidden;
+  opacity: 0;
+}
+.hintText {
+  grid-column: span 2;
+  text-align: center;
+  align-self: center;
+  font-weight: 900;
+  color: black;
+  text-shadow: none;
+}
+.hintModal.show {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+.confirmBox.show {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1.5);
+}
+.confirmBox button {
+  align-self: center;
+  justify-self: center;
+  font-weight: bolder;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 1px 2px 3px black;
+}
+.confirmBox button:hover {
+  transform: translateY(-2px);
+  box-shadow: 1px 4px 5px #000000c9;
+}
+.confirmBox .noBtn {
+  border: none;
+  background: red;
+  color: white;
+}
+.confirmBox .yes {
+  border: none;
+  background: #0753a6;
+  color: white;
+}
+.yes i {
+  color: #3aff3a;
+}
+audio {
+  display: none;
+}
+.circle .lock {
+  position: absolute;
+  width: calc(100% + 1px);
+  height: calc(100% + 1px);
+  z-index: 1;
+  background: black;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.off {
+  text-decoration: line-through;
+  background: black;
+  color: white;
+}
+.themePack,
+.aboutCont {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  transform: translateY(-100%);
+  transform-origin: bottom;
+  align-items: center;
+  transition: all 0.4s ease-out;
+  pointer-events: none;
+  border: 2px solid black;
+}
+.themePack .themeLogo {
+  position: absolute;
+  text-shadow: none;
+  filter: drop-shadow(2px 3px 1px black);
+  top: 10px;
+  font-size: 40px;
+  font-weight: bolder;
+  -webkit-background-clip: text;
+  background-clip: text;
+  background-image: linear-gradient(0deg, #faf67a, #bdfca1);
+  color: transparent;
+}
+.themePack.show,
+.aboutCont.show {
+  transform: translateY(0);
+  transform-origin: bottom;
+  pointer-events: auto;
+}
+.themeCont {
+  display: grid;
+  grid-template-columns: repeat(4, 22%);
+  grid-template-rows: repeat(4, 22%);
+  gap: 15px;
+  grid-row-gap: 35px;
+  transform: translateY(-30%);
+}
+.themeCont .circle {
+  border-radius: 50%;
+  height: 60px;
+  width: 60px;
+  background: white;
+  align-self: center;
+  justify-self: center;
+  border: 1px solid white;
+  box-shadow: 1px 1px 3px black;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+.circle .fa-lock {
+  color: yellow;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+.themeCont .circle:hover {
+  transform: translateY(-3px);
+  box-shadow: 1px 2px 4px black;
+}
+.aboutBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(-50%);
+  margin: 10px;
+}
+
+.aboutBox .version {
+  font-weight: bolder;
+  font-size: 16px;
+  margin-bottom: 10px;
+  filter: drop-shadow(1px 1px 3px black);
+}
+.aboutBox img {
+  border-radius: 50%;
+  border: 1px solid white;
+  -webkit-box-shadow: 1px 2px 3px black;
+  box-shadow: 1px 2px 3px black;
+  filter: invert(1);
+  transition: all 0.3s ease;
+}
+.aboutBox img:hover {
+  filter: invert(0);
+}
+.aboutBox .aboutText {
+  font-size: 20px;
+}
+.aboutBox .aboutText,
+.name,
+.version {
+  text-align: justify;
+  font-weight: bolder;
+  text-shadow: none;
+  filter: invert(0) drop-shadow(2px 2px black);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(45deg, green, yellow);
+}
+.leaderBoard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid green;
+  -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.6);
+  position: absolute;
+  width: 200px;
+  left: 30%;
+  top: 400px;
+}
+
+#highestMoney {
+  list-style-type: decimal;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 40%;
+  width: 100%;
+}
+.highlight {
+  color: orange;
+  font-weight: bolder;
+}
+#highestMoney li {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+@media (max-height: 400px) {
+  body {
+    zoom: 100%;
+  }
+  .confirmBox.show {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1.3);
+  }
+}
+@media (max-width: 400px) {
+  .confirmBox.show {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1.3) translate(0, -50%);
+  }
+}

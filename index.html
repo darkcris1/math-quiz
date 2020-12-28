@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,height=700 initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Math Quiz</title>
+	<link rel="stylesheet" href="style/mathquiz.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="style/fontawesome/css/all.min.css">
+	<link rel="stylesheet" href="style/fontawesome/css/all.css">
+	<link rel="shortcut icon" href="./favicon.png" >
+</head>
+<body>
+	<div class="gameContainer">
+		<header class="head">
+			<button class="hintBtn">Hint <i class="fas fa-question"></i></button>
+			<h1 class="logo">MathQuiz</h1>
+			<div class="moneyCont">
+				<span class="money"></span>
+				<i class="fa fa-dollar-sign"></i>
+				<!--<span class="indicator">+10</span>-->
+			</div>
+		</header>
+		<div class="problem">
+			<span class="num1"></span>
+			<span class="operand">+</span>
+			<span class="num2"></span>
+			
+		</div>
+		<div class="inputCont">
+			<input type="text" name="answer" id="answer" value="" required="" />
+			<button onclick="submit('e')" class="submitBtn">Submit</button>
+		</div>
+		<div class="buttonCont">
+			<button class="changeDifficulty">
+				Change Difficulty
+			</button>
+			<div class="difficulty" id="difficults">
+				<button disabled="true" onclick="difficultyRandom(1,10,'a')" class="easy">Easy</button>
+				<button onclick="difficultyRandom(10,99,'b')" class="medium">Medium</button>
+				<button onclick="difficultyRandom(100,999,'c')" class="hard">Hard</button>
+			</div>
+			<button class="changeOperator">
+				Change Operator
+			</button>
+			<div class="difficulty" id="operatorS">
+				<button onclick="oper('plus')" class="plus">+</button>
+				<button onclick="oper('min')" class="minus">-</button>
+				<button onclick="oper('mult')" class="mult">&times;</button>
+				<button onclick="oper('divide')" class="mult">&divide;</button>
+			</div>
+			
+			<button class="settings">
+				Settings
+			</button>
+			<div class="difficulty" id="setting">
+				<button class="howTo">How to</button>
+				<button id="off" class="soundOff">Sound</button>
+				<button id="offVibrate" class="vibrate">Vibrate</button>
+				<button onclick="theme()" class="theme">Theme</button>
+				<!--<button onclick="localStorage.clear()" class="theme">clear</button>-->
+				<button class="about">About</button>
+			</div>
+		</div>
+		<section class="hintModal">
+			<div class="confirmBox">
+				<span class="hintText">
+					Is it really hard ?
+				</span>
+				<button class="noBtn">No</button>
+				<button onclick="hintShow()" class="yes">-20 <i class="fa fa-dollar-sign"></i></button>
+			</div>
+		</section>
+		<div class="themePack">
+			<h2 class="themeLogo">Theme Shop</h2>
+			<div class="themeCont">
+				<div style="background:linear-gradient(#51bb6b,#70e970,#b7d281)"
+					 class="circle">
+				</div>
+				<div style="background:linear-gradient(0deg,black, #292929, #403737)"
+				   	 class="circle">
+				</div>
+				<div style="background:linear-gradient(20deg,darkblue,darkgreen)"
+			 	  	 class="circle">
+					<span class="lock">
+						<i class="fas fa-lock"></i>
+					</span>
+				</div>
+				<div style="background:linear-gradient(to right,#7a2d87,rgb(230,0,167))"
+					 class="circle">
+					<span class="lock">
+						<i class="fas fa-lock"></i>
+					</span>
+				</div>
+				<div style="background:linear-gradient(45deg,#774b25,#ce6d58)"
+					class="circle">
+					<span class="lock">
+						<i class="fas fa-lock"></i>
+					</span>
+				</div>
+				<div style="background:linear-gradient(70deg,#4646b8,#4e774e,darkgreen,#6868da,#e66446)"
+					class="circle">
+					<span class="lock">
+						<i class="fas fa-lock"></i>
+					</span>
+				</div>
+				<div style="background:linear-gradient(to right,#a09e31,rgb(0,149,0),#5f5fa9)"
+					class="circle">
+					<span class="lock">
+						<i class="fas fa-lock"></i>
+					</span>
+				</div>
+				<div style="background:linear-gradient(to left,#b88616,#042d04,#674200,#5e0000,#565600)"
+					class="circle">
+					<span class="lock">
+						<i class="fas fa-lock"></i>
+					</span>
+				</div>
+				<div style="background:linear-gradient(80deg,#cea0d0,#a9aed2)"
+					class="circle">
+					<span class="lock">
+						<i class="fas fa-lock"></i>
+					</span>
+				</div>
+				<div style="background:linear-gradient(40deg,#5d4567,#797233,#9e9e53)"
+					class="circle">
+					<span class="lock">
+						<i class="fas fa-lock"></i>
+					</span>
+				</div>
+			</div>
+		</div>
+		<section class="aboutCont">
+			<div class="aboutBox">
+				<img src="https://scontent.fceb1-1.fna.fbcdn.net/v/t1.0-9/86997626_2742398829181423_109939673740083200_o.jpg?_nc_cat=101&ccb=2&_nc_sid=09cbfe&_nc_eui2=AeGrnndie3PPQjzFbmlt4YWI-AUdY48_sG34BR1jjz-wbaD8O66cSgQWVZUOq5vWYwqf_0r1GoVfXdwrCi2pdmD-&_nc_ohc=O-78kNOrc7EAX9G-JlY&_nc_ht=scontent.fceb1-1.fna&oh=7b0176574bf87aaea847a993a512a2ca&oe=60113F74" alt="profile" height="120" width="150"/>
+				<span class="name">Cris Fandiño</span>
+				<span class="version">MathQuiz 1.1.1</span>
+				<span class="aboutText">
+					This app developed for educational purposes to enhance knowledge
+					in mathematics and test your ability in basic mathematical operations
+				</span>
+			</div>
+		</section>
+		<audio src="" controls="controls"></audio>
+	</div>
+	<div class="leaderBoard">
+		<h2 class="logo">Leaderboard</h2>
+		<ul id="highestMoney">
+			
+		</ul>
+	</div>
+
+	<script src="https://unpkg.com/jquery" type="text/javascript" charset="utf-8"></script>
+	<script src="https://unpkg.com/draggabilly@2/dist/draggabilly.pkgd.min.js"></script>
+	<script src="script/mathquiz.js" type="text/javascript" charset="utf-8"></script>
+	<script src="script/leaderboard.js" type="text/javascript" charset="utf-8"></script>
+	<script async src="script/theme.js" type="text/javascript" charset="utf-8"></script>
+	<script async src="script/about.js" type="text/javascript" charset="utf-8"></script>
+	<script async src="script/window.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>
